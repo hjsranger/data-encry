@@ -1,0 +1,16 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.52.227.26:3306/hjs-test?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: HJS
+    initial-size: 15
+    maximum-pool-size: 30
+    test-while-idle: true
+    time-between-eviction-runs-millis: 300000
+    validation-query: SELECT 1
+
