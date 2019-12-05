@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjs.dataencry.mapper.SysUserMapper">
+
+
+    <select id="selectEncry" resultType="com.hjs.dataencry.model.SysUser" parameterType="com.hjs.dataencry.model.SysUser">
+
+        SELECT
+            id,
+            `name`,
+            info,
+            AES_DECRYPT( info_encry, #{query.key,jdbcType=VARCHAR} ) as info_encry
+        FROM
+            sys_user
+        WHERE
+            AES_DECRYPT( info_encry, #{query.key,jdbcType=VARCHAR} ) LIKE CONCAT('%',#{query.queryString,jdbcType=VARCHAR},'%')
+
+    </select>
+
+</mapper>
